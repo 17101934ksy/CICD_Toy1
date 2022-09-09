@@ -13,7 +13,6 @@ class User(db.Model):
     phone = Column(String(15), nullable=False)
     address = Column(String(70), nullable=False)
     
-
     def __init__(self, email: str, password_plaintext: str, phone: str):
         self.email = email
         self.password_hashed = self._generate_password_hash(password_plaintext)

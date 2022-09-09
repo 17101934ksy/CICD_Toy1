@@ -9,7 +9,10 @@ def generate_integer(string):
     Returns:
         _type_: 정수만 가지는 문자열
     """
-    integer_compile = re.compile(r'0-9')
+    integer_compile = re.compile(r'[0-9]')
     string = re.findall(integer_compile, string)
 
     return ''.join(string)
+
+# def convert_request_form(form):
+

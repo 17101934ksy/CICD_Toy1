@@ -25,7 +25,7 @@ def flask_config():
 
 @pytest.fixture(scope='module')
 def new_user():
-    user = User('gosunsangtrip@gmail.com', 'FlaskTest123')
+    user = User('gosunsangtrip@gmail.com', 'FlaskTest123', '010-1111-1111')
     return user
 
 @pytest.fixture(scope='module')

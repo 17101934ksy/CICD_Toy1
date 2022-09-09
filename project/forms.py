@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, EqualTo, Email
 from wtforms import StringField, PasswordField, HiddenField
 from wtforms.fields.html5 import EmailField
 
-class Register(FlaskForm):
+class RegisterForm(FlaskForm):
     """로그인 등록 폼
 
     Args:
