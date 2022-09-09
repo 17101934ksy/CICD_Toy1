@@ -41,7 +41,7 @@ def configure_database(app):
     Args:
         app (object): flask object
     """
-    @app.before_first_request
+    @app.before_request
     def initialize_database():
         db.create_all()
     
