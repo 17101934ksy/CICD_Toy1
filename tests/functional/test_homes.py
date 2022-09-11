@@ -14,7 +14,7 @@ def test_home_page(test_client):
     THEN check that the response is valid
     """
     
-    response = test_client.get('/')
+    response = test_client.get('/home')
     assert response.status_code == 200
     assert b'hello flask' in response.data
     # assert b'Need an account?' in response.data
