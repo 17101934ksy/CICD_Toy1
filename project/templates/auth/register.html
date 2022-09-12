@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form role="form" method="post" class="post-form">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.userId(placeholder="아이디", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.password(placeholder="비밀번호", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.confirmPassword(placeholder="비밀번호확인", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.email(placeholder="이메일", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.userName(placeholder="유저이름", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.phone(placeholder="핸드폰번호", class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.address(placeholder="주소", class="form-control") }}
+        </div>
+        <button type="submit" name="register" class="btn btn-outline-warning waves-effect" id="register_button"> 회원가입 </button>
+    </form>
+</body>
+</html>
