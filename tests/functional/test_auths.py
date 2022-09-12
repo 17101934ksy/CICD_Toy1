@@ -1,9 +1,5 @@
 from project import create_app, db
 from project.models import User
-from project.forms import RegisterForm
-from flask import request
-from werkzeug.datastructures import ImmutableMultiDict
-from werkzeug.wrappers import Request, Response
 import json
 
 from flask_migrate import Migrate
@@ -17,14 +13,14 @@ def test_register(test_client):
 
     # test1
     response = test_client.get(
-        '/user-register'
+        '/register-user'
     )
     assert response.status_code == 200
     assert b'register html' in response.data
 
     # test2
     response = test_client.post(
-        '/user-register', 
+        '/register-user', 
         data = json.dumps({'email': 'admin@admin.com', 'password': '12341234', 'name': 'admin', 'phone': '010-1111-1111', 'address': 'seoul'}),
         headers={"Content-Type": "application/json"},
     )
@@ -33,7 +29,7 @@ def test_register(test_client):
 
     # test3
     response = test_client.post(
-        '/user-register', 
+        '/register-user', 
         data = json.dumps({'email': 'admin2@admin.com', 'password': '12341234', 'name': 'admin', 'phone': '010-1111-1111', 'address': 'seoul'}),
         headers={"Content-Type": "application/json"},
     )
@@ -47,20 +43,20 @@ def test_register(test_client):
 def test_login(test_client):
     """
     GIVEN user login
-    WHEN the '/user-login' page is requested (POST)
+    WHEN the '/login-user' page is requested (POST)
     THEN check that the response is valid email, password
     """
 
     # test1
     response = test_client.get(
-        '/user-login'
+        '/login-user'
     )
     assert response.status_code == 200
     assert b'login' in response.data
 
     # test2 로그인 성공
     response = test_client.post(
-        '/user-login',
+        '/login-user',
         data=json.dumps({'email': 'admin@admin.com', 'password': '12341234'}),
         headers={"Content-Type": "application/json"}
     )
@@ -69,7 +65,7 @@ def test_login(test_client):
 
     # test3 로그인 실패(email none)
     response = test_client.post(
-        '/user-login',
+        '/login-user',
         data = json.dumps({'email': 'test@test.com', 'password': '12341234'}),
         headers={"Content-Type": "application/json"}
     )
@@ -78,9 +74,22 @@ def test_login(test_client):
     
     # test3 로그인 실패(password error)
     response = test_client.post(
-        '/user-login',
+        '/login-user',
         data=json.dumps({'email': 'admin@admin.com', 'password':'1234123'}),
         headers={"Content-Type": "application/json"}
     )
     assert response.status_code == 200
     assert b'error' in response.data
+
+def test_logout(test_client):
+    """
+    GIVEN user logout
+    WHEN the '/logout-user' page is requested (POST)
+    THEN check that the response is valid logout
+    """
+    
+    response = test_client.get(
+        '/logout-user'
+    )
+    assert response.status_code == 200
+    assert b'logout complete' in response.data

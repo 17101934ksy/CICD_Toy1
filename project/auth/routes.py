@@ -46,7 +46,7 @@ def default_auth():
 #     return render_template('auth/register.html', form=register_form)
 
 
-@bp.route('/user-register', methods=['GET', 'POST'])
+@bp.route('/register-user', methods=['GET', 'POST'])
 def register():
 
     # register_form =  RegisterForm(request.form)
@@ -82,7 +82,7 @@ def register():
 
 #     return "login"
 
-@bp.route('/user-login', methods=['GET', 'POST'])
+@bp.route('/login-user', methods=['GET', 'POST'])
 def login():
 
     if request.method == 'POST':
@@ -101,7 +101,17 @@ def login():
 
     return "login"
 
+@bp.route('/logout-user')
+def logout():
 
+    session.clear()
+    try:
+        if session['user_id'] is not None:
+            return "session is valid logout error"
+        else:
+            return "logout error"
+    except:
+        return "logout complete"
 
 
 @login_manager.unauthorized_handler
