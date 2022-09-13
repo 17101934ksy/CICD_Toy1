@@ -23,7 +23,7 @@ def register_extensions(app):
         app (object): flask object
     """
     db.init_app(app)
-    login_manager.init_app(app)
+    # login_manager.init_app(app)
 
 def register_blueprints(app):
     """Register blueprint

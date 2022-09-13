@@ -52,18 +52,16 @@ class Music(db.Model):
     def __repr__(self):
         return f'{self.name}'
 
-# class MusicViewer(db.Model):
-#     __tablename__ = 'musicviewers'
+class MusicViewer(db.Model):
+    __tablename__ = 'musicviewers'
 
-#     id = Column(Integer, ForeignKey('musics.id'), primary_key=True, nullable=False)
-#     viewer = Column(Integer, nullable=False)
-#     heart = Column(Integer, nullable=False)
+    id = Column(Integer, ForeignKey('musics.id'), primary_key=True, nullable=False)
+    viewer = Column(Integer, nullable=False)
+    heart = Column(Integer, nullable=False)
 
-#     music = db.relationship('musics', backref='musicviewers')
-
-#     def __init__(self):
-#         self.viewer = 0
-#         self.heart = 0
+    def __init__(self):
+        self.viewer = 0
+        self.heart = 0
     
-#     def __repr__(self):
-#         return f'{self.viewer}'
+    def __repr__(self):
+        return f'{self.viewer}'
